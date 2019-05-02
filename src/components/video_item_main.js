@@ -1,9 +1,14 @@
 import React from 'react';
 
-const VideoItem = (video) => {
+const VideoItem = ({video, handleVideoSelect}) => {
     return (
-        <div className="video-list"width="420" height="345">
-        < video src={video.items.url}/>
+        <div onClick={ () => handleVideoSelect(video)} className="video-item" >
+            <img className='video image' src={video.snippet.thumbnails.medium.url} alt={video.snippet.description}/>
+        </div>
+
+        <div className='content' >
+          <div className='header'>{video.snippet.title}</div>
+
         </div>     
     )
 }
