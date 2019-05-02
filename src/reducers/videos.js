@@ -7,8 +7,9 @@ const initialState =  {
 export default function videos(state = initialState, action) {
   switch (action.type) {
     case REQUEST_VIDEOS:
+    console.log(action.payload)
       return {
-        ...state, data: action.payload.body.data
+        ...state, data: action.payload.body.items
       };
     default:
       return state;

@@ -1,25 +1,42 @@
+
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as Actions from '../actions';
+import VideoPlay from '../components/videoPlay'
 import SearchBar from '../components/searchBar';
 import VideoList from '../components/video_list'
-
+import './App.css';
 
 class App extends React.Component {
   render() {
-    return (
-      <div>
-        <SearchBar onTermChange={this.props.actions.requestVideos} />
-		<VideoList videos={this.props.videos} />
-      </div>
-    );
+    return(
+      <div className="App">
+      <header className="App-header">
+       <div className="menu">
+         <ui className="nav">
+           <li><a href="/">Home</a></li>
+            <li><a href="/Favorite Videos/">Favorite Videos</a></li>
+            <li><a href="/KidsOnly/">Kids Only</a></li>
+         </ui>
+       </div>
+       </header>
+
+       <section className="searchBar">
+         <SearchBar onTermChange={this.props.actions.requestVideos} />
+       </section >
+        <section className="main">
+         <VideoPlay />
+         <VideoList videos={this.props.videos} />
+        </section>   
+        </div>
+    )
   }
 }
 
 function mapStateToProps(state) {
   return {
-    videos: state.videos.data
+    videos: state.videos.items
   };
 }
 
@@ -30,3 +47,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
