@@ -1,7 +1,18 @@
 import { REQUEST_VIDEOS } from '../actions';
 
 const initialState =  {
-  data: []
+ 
+    data: [],
+    items: [
+       {snippet: {
+          description: '',
+          title: '',
+          thumbnails: [
+            { default: ''}
+          ]
+       }
+      }
+    ]  
 };
 
 export default function videos(state = initialState, action) {

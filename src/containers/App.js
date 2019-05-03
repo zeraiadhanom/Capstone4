@@ -27,7 +27,7 @@ class App extends React.Component {
        </section >
         <section className="main">
          <VideoPlay />
-         <VideoList videos={this.props.videos} />
+         <VideoList items={this.props.items} />
         </section>   
         </div>
     )
@@ -35,8 +35,9 @@ class App extends React.Component {
 }
 
 function mapStateToProps(state) {
+  console.log(state.videos.items)
   return {
-    videos: state.videos.items
+    items: state.videos.items
   };
 }
 
