@@ -1,27 +1,17 @@
 import React from 'react';
 
-class VideoItems extends React.Component {
-    render() {
-        return(
-            <div className="VideoItems">
-            <ul className="video_container">
-                <li>
-                    VideoONe
-                </li>
-                <li>
-                    VideoTwo
-                </li>
-                <li>
-                    VideoThree
-                </li>
-                <li>
-                    VideoFour
-                </li>
-            </ul>
+const VideoItem = ({item, handleVideoSelect}) => {
+    const imageUrl = item.snippet.thumbnails.default.url
 
-            </div>
-        )
-    }
+    return (
+        <div onClick={ () => handleVideoSelect(item)} className="video-item" >
+            <img className='video image' src={imageUrl} alt={item.snippet.description}/>
+
+        <div className='content'> 
+          <div className='header'>{item.snippet.title}</div>
+         </div> 
+         </div>    
+    )
 }
 
-export default VideoItems;
+export default VideoItem;
