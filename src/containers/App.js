@@ -14,11 +14,11 @@ class App extends React.Component {
       <div className="App">
       <header className="App-header">
        <div className="menu">
-         <ui className="nav">
+         <ul className="nav">
            <li><a href="/">Home</a></li>
             <li><a href="/Favorite Videos/">Favorite Videos</a></li>
             <li><a href="/KidsOnly/">Kids Only</a></li>
-         </ui>
+         </ul>
        </div>
        </header>
 
@@ -37,7 +37,7 @@ class App extends React.Component {
 function mapStateToProps(state) {
   console.log(state.videos.items)
   return {
-    items: state.videos.items
+    items: state.videos.data
   };
 }
 
