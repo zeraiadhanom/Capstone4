@@ -26,7 +26,7 @@ class App extends React.Component {
          <SearchBar onTermChange={this.props.actions.requestVideos} />
        </section >
         <section className="main">
-         <VideoPlay />
+        <VideoPlay />
          <VideoList items={this.props.items} />
         </section>   
         </div>

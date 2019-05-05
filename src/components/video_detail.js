@@ -1,13 +1,14 @@
 import React from 'react';
+import './video_detail.css'
 
-const VideoDetail = ({video}) => {
-    if (!video) {
+const VideoDetail = ({items}) => {
+    if (!items) {
         return 
         <div>
             Loading --->
         </div>
     }
-    const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`
+    const videoSrc = `https://www.youtube.com/embed/${items.id.itemsId}`
         console.log(typeof(videoSrc));
         return (
             <div>
@@ -15,8 +16,8 @@ const VideoDetail = ({video}) => {
                 <iframe src={videoSrc} allowFullScreen title='video player' />
             </div>
               <div className="video_segment">
-              <h4 className='video_header'>{video.snippet.title}</h4>
-               <p>{video.snippet.description}</p>
+              <h4 className='video_header'>{items.snippet.title}</h4>
+               <p>{items.snippet.description}</p>
             </div>
             </div>
         )

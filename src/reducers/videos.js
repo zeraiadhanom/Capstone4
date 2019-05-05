@@ -3,7 +3,7 @@ import { REQUEST_VIDEOS } from '../actions';
 const initialState =  {
  
     data: [],
-    items: [
+    videos: [
        {snippet: {
           description: '',
           title: '',

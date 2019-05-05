@@ -1,7 +1,7 @@
 import React from 'react';
 
 const VideoItem = ({items, handleVideoSelect}) => {
-    const imageUrl = items.snippet.thumbnails.default
+    const imageUrl = items.snippet.thumbnails.default.url
 
     return (
         <div onClick={ () => handleVideoSelect(items)} className="video-item" >

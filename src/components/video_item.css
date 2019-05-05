@@ -2,3 +2,9 @@ video_container li {
     width: 100px;
     height: 200px;
 }
+
+
+.video-item img {
+    max-width: 64px;
+  }
+  
