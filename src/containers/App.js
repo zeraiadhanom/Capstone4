@@ -1,15 +1,26 @@
 
-import React from 'react';
+import React, {Component} from 'react';
+import {debounce} from 'lodash';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as Actions from '../actions';
-import VideoPlay from '../components/videoPlay'
+import * as actions from '../actions';
+import YTSearch from 'youtube-api-search';
 import SearchBar from '../components/searchBar';
-import VideoList from '../components/video_list'
+import VideoList from '../components/video_list';
+import VideoDetail from '../components/video_detail';
 import './App.css';
 
-class App extends React.Component {
+class App extends Component {
+  componentWillMount() {
+    this.props.requestVideos('Eritrea')
+  }
   render() {
+    const {videos, selectedVideo} = this.props;
+    if (!videos || !selectedVideo) {
+      return (
+        <div>....Loading</div>
+      )
+    }
     return(
       <div className="App">
       <header className="App-header">
@@ -23,29 +34,33 @@ class App extends React.Component {
        </header>
 
        <section className="searchBar">
-         <SearchBar onTermChange={this.props.actions.requestVideos} />
+         <SearchBar />
        </section >
         <section className="main">
-        <VideoPlay />
-         <VideoList items={this.props.items} />
-        </section>   
+        <VideoDetail video={selectedVideo} />
+         <VideoList videos={videos} />
+         </section>   
         </div>
     )
   }
 }
 
 function mapStateToProps(state) {
-  console.log(state.videos.items)
+  
   return {
-    items: state.videos.data
+    videos: state.video.videos,
+    selectedVideo: state.video.selectedVideo
   };
 }
 
-function mapDispatchToProps(dispatch) {
+/*unction mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(Actions, dispatch)
+    actions: bindActionCreators(dispatch, Action)
   };
-}
+} */
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, actions)(App);
+
+
+//https://github.com/jamalsoueidan/react-redux-youtube-search-api/blob/master/src/components/application.js
 

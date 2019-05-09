@@ -4,3 +4,7 @@
   border: 1px solid #ddd;
   border-radius: 4px;
 }
+/video-display {
+  width: 50%;
+  height: 90px;
+}

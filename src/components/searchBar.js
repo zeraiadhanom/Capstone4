@@ -1,18 +1,25 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { debounce } from 'lodash';
+import * as actions from '../actions';
 
-import React from 'react';
+class SearchBar extends Component {
 
-class SearchBar extends React.Component {
-    onInputChange(term) {
-        this.props.onTermChange(term);
-    }
+  onInputChange(term) {
+     (this.props.requestVideos(term));
+  }
 
-    render() {
-        return (
-            <div className="search">
-                <input placeholder="Enter text to search for videos!" onChange={event => this.onInputChange(event.target.value)} />
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div className="search-bar-component form-group row">
+        <input
+          className="form-control"
+          onChange={event => this.onInputChange(event.target.value)}
+          type="text"
+          placeholder="Search"/>
+      </div>
+    );
+  }
 }
 
-export default SearchBar;
+export default connect(null, actions)(SearchBar);

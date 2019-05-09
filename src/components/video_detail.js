@@ -1,26 +1,31 @@
 import React from 'react';
 import './video_detail.css'
 
-const VideoDetail = ({items}) => {
-    if (!items) {
-        return 
-        <div>
-            Loading --->
-        </div>
-    }
-    const videoSrc = `https://www.youtube.com/embed/${items.id.itemsId}`
-        console.log(typeof(videoSrc));
-        return (
-            <div>
-                <div className='video-detail'>
-                <iframe src={videoSrc} allowFullScreen title='video player' />
-            </div>
-              <div className="video_segment">
-              <h4 className='video_header'>{items.snippet.title}</h4>
-               <p>{items.snippet.description}</p>
-            </div>
-            </div>
-        )
-}
+export default function VideoDetail({ video }) {
+   console.log({video})
 
-export default VideoDetail; 
+  if(!video) {
+    return (
+      <div>...Loading</div>
+    );
+  }
+
+  const {
+    snippet: { title, description }, id: { videoId }
+  } = video;
+
+  const url = `https://youtube.com/embed/${videoId}`;
+
+  return (
+    <div className="video-player-component col-md-8">
+      <div className="embed-responsive embed-responsive-16by9">
+        <iframe className="embed-responsive-item" src={url}></iframe>
+      </div>
+      <div className="details">
+        <strong>{title}</strong>
+        <p>{description}</p>
+      </div>
+    </div>
+  );
+};
+

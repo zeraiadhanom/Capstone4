@@ -1,17 +1,23 @@
-import React from 'react';
+import React, {Component} from 'react';
+import './video_item.css'
+import * as actions from '../actions'
+import  {connect} from 'react-redux';
 
-const VideoItem = ({items, handleVideoSelect}) => {
-    const imageUrl = items.snippet.thumbnails.default.url
+class VideoItem extends Component {
+  render() {
+      const { video, selectVideo} = this.props;
+        console.log(this.props)
+      const {snippet:{title, thumbnails:{default:{url}}}} = video;
 
     return (
-        <div onClick={ () => handleVideoSelect(items)} className="video-item" >
-            <img className='video image' src={imageUrl} alt={items.snippet.description}/>
-
+       <li onClick={ () => selectVideo(video)} className="video-item" >
+            <img className='video-image' src={url} alt={video.snippet.description}/>
         <div className='content'> 
-          <div className='header'>{items.snippet.title}</div>
+            <div className='header'>{title}</div>
          </div> 
-         </div>    
+       </li>    
     )
 }
+}
 
-export default VideoItem;
+export default connect(null, actions)(VideoItem)

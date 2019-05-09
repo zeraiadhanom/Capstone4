@@ -1,24 +1,25 @@
-import request from 'superagent';
 
-export const REQUEST_VIDEOS = 'REQUEST_VIDEOS';
+import YTSearch from 'youtube-api-search'
+import {REQUEST_VIDEOS, SELECT_VIDEO} from './actionType'
 
-const API_URL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=';
+
+
+//const API_URL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=';
 const API_KEY = 'AIzaSyBYhtoV6rW9kAGuxUPuFaYlK6JVRppseY4'
-const type = '&type=video&key='
+//const type = '&type=video&key='
 
-export function requestVideos(term = null) {
-    return function(dispatch) {
-        request.get(`${API_URL}${term.replace(/\s/g, '+')}${type}${API_KEY}`).then(response => {
-            dispatch({
-                type: REQUEST_VIDEOS,
-                payload: response
-            });
-        });
-    }
+export const requestVideos = (term) => (dispatch) => {
+    YTSearch({key: API_KEY, term}, videos => {
+        const payload = {
+            videos,
+            selectedVideo: videos[0]
+        }
+        dispatch({type: REQUEST_VIDEOS, payload})
+    })
 }
 
+export function selecteVideo(video) {
+    return { type: SELECT_VIDEO, payload: video}
+}
 
-
-//https://www.googleapis.com/youtube/v3/search?part=snippet&q=swimming&type=video&key=AIzaSyBYhtoV6rW9kAGuxUPuFaYlK6JVRppseY4
-
-
+//https://github.com/sakoh/react-redux-youtube-player/blob/master/src/components/video_player.js

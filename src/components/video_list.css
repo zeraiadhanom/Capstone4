@@ -1,9 +1,10 @@
-.video-List {
+.videolist {
     height: 500px;
     width: 50%;
-    border: 1px solid green;
+    border: 1px solid black;
     float: right;
     border-radius: 20px;
     margin-right: .5px;
+
 
 } 

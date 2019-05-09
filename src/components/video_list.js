@@ -3,19 +3,17 @@ import './video_list.css'
 import VideoItem from './video_item'
 
 
-    const VideoList = (props) => {
-        const videoItems = props.items.map((video) => {
-            return( <VideoItem key={video.etag}
-               items={video} />
-            );
-        });
+export default function VideoList({videos}) {
+    
+    console.log('this')
 
-        return(
-            <section className="video-List"> 
-               {videoItems}
-            </section>
-        )
+    const videosList = videos.map(video =>
+        <VideoItem key={video.etag} video={video} />
+      );
+    
+      return (
+        <ul className="video-list">
+          {videosList}
+        </ul>
+      );
     }
-
-
-export default VideoList;
