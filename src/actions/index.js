@@ -18,7 +18,7 @@ export const requestVideos = (term) => (dispatch) => {
     })
 }
 
-export function selecteVideo(video) {
+export function selectVideo(video) {
     return { type: SELECT_VIDEO, payload: video}
 }
 

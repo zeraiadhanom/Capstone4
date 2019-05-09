@@ -6,6 +6,8 @@ import  {connect} from 'react-redux';
 class VideoItem extends Component {
   render() {
       const { video, selectVideo} = this.props;
+            console.log({selectVideo})
+            console.log('this')
         console.log(this.props)
       const {snippet:{title, thumbnails:{default:{url}}}} = video;
 
