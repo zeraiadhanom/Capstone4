@@ -11,15 +11,11 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div className="search-bar-component form-group row">
-        <input
-          className="form-control"
-          onChange={event => this.onInputChange(event.target.value)}
-          type="text"
-          placeholder="Search"/>
-      </div>
+        <div className="search">
+            <input placeholder="Enter text to search for videos!" onChange={event => this.onInputChange(event.target.value)} />
+        </div>
     );
-  }
+}
 }
 
 export default connect(null, actions)(SearchBar);

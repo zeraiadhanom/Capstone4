@@ -12,8 +12,8 @@ export default function VideoList({videos}) {
       );
     
       return (
-        <ul className="video-list">
+        <section className="video-List">
           {videosList}
-        </ul>
+        </section>
       );
     }

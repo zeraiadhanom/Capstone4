@@ -1,13 +1,14 @@
-video_container li {
-    width: 100px;
+.video-item {
+    display: flex;
+    margin: 10px;
+    border: 1px solid gray;
+    cursor: pointer;
+ }
+ 
+ .content {
     
-}
-
-
-.video-item img {
-    max-width: 80px;
-  }
-  
-  
-
-  
+     align-content: center;
+     padding-right: 10px; 
+     width: 300px;
+ 
+ }

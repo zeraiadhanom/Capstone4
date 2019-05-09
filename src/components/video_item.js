@@ -10,12 +10,12 @@ class VideoItem extends Component {
       const {snippet:{title, thumbnails:{default:{url}}}} = video;
 
     return (
-       <li onClick={ () => selectVideo(video)} className="video-item" >
+       <div onClick={ () => selectVideo(video)} className="video-item" >
             <img className='video-image' src={url} alt={video.snippet.description}/>
         <div className='content'> 
             <div className='header'>{title}</div>
          </div> 
-       </li>    
+       </div>    
     )
 }
 }

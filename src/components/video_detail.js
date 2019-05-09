@@ -17,15 +17,13 @@ export default function VideoDetail({ video }) {
   const url = `https://youtube.com/embed/${videoId}`;
 
   return (
-    <div className="video-player-component col-md-8">
-      <div className="embed-responsive embed-responsive-16by9">
-        <iframe className="embed-responsive-item" src={url}></iframe>
-      </div>
-      <div className="details">
-        <strong>{title}</strong>
+    
+    <div className="video-detail">
+       <iframe width="560" height="349" className="videoPlay" src={url}frameborder="0" allowfullscreen></iframe>
+       <p><strong>{title}</strong></p>
         <p>{description}</p>
       </div>
-    </div>
+    
   );
 };
 
