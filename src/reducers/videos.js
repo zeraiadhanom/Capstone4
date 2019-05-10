@@ -1,5 +1,6 @@
 import { REQUEST_VIDEOS, SELECT_VIDEO } from '../actions/actionType';
 
+
 export default function(state = {}, action) {
   switch(action.type) {
     case REQUEST_VIDEOS:
